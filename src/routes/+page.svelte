@@ -1,25 +1,22 @@
 <script>
-    import "../tailwind.css";
+	import '../tailwind.css';
 
 	import NativeExpression from '../components/nativeExpression.svelte';
 	import WriteTranslation from '../components/writeTranslation.svelte';
-
-	let currentStep = 1;
-
-	/**
-	 * @param {{ target: { parentNode: any; }; }} event
-	 */
-	function goToNextStep(event) {
-		const parentOfButton = event.target.parentNode;
-        parentOfButton.classList.remove('active');
-        // set the next sibling of the parent to active
-        parentOfButton.nextElementSibling.classList.add('active');
-	}
-
-	
 </script>
 
-<main class="text-center container p">
+<main class="text-center container card p">
+    <div class="card w-96 bg-base-100 shadow-xl">
+        <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <div class="card-body">
+          <h2 class="card-title">Shoes!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
 	<ul data-role="tabs" data-expand="true" id="tabs">
 		<li><a href="#_target_1">Initial Settings</a></li>
 		<li><a href="#_target_2">Image Prompt</a></li>
@@ -45,9 +42,6 @@
 					<option value="Japanese">Arabic</option>
 				</select>
 			</div>
-            <button on:click={goToNextStep}>
-                Go To Prompt
-            </button>
 		</div>
 		<div id="_target_2">The shield is a post-apocalyptic nanomachine.</div>
 		<div id="_target_3">Cream soup is just not the same without basil</div>
