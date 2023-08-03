@@ -1,0 +1,2 @@
+- Implement MVP based on sketch in notebook
+- Load in some CSS Framework

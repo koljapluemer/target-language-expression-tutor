@@ -1,26 +1,64 @@
 <script>
-  import NativeExpression from '../components/nativeExpression.svelte';
-  import WriteTranslation from '../components/writeTranslation.svelte';
+    import "../tailwind.css";
 
-  let currentStep = 1;
+	import NativeExpression from '../components/nativeExpression.svelte';
+	import WriteTranslation from '../components/writeTranslation.svelte';
 
-  function goToNextStep() {
-    // ...
-  }
+	let currentStep = 1;
 
-  function goToPreviousStep() {
-    // ...
-  }
+	/**
+	 * @param {{ target: { parentNode: any; }; }} event
+	 */
+	function goToNextStep(event) {
+		const parentOfButton = event.target.parentNode;
+        parentOfButton.classList.remove('active');
+        // set the next sibling of the parent to active
+        parentOfButton.nextElementSibling.classList.add('active');
+	}
+
+	
 </script>
 
-<main>
-  {#if currentStep === 1}
-    <NativeExpression />
-  {:else if currentStep === 2}
-    <WriteTranslation />
-  {/if}
+<main class="text-center container p">
+	<ul data-role="tabs" data-expand="true" id="tabs">
+		<li><a href="#_target_1">Initial Settings</a></li>
+		<li><a href="#_target_2">Image Prompt</a></li>
+		<li><a href="#_target_3">Translation Attempt</a></li>
+		<li><a href="#_target_4">Automatic Translation</a></li>
+		<li><a href="#_target_5">Write it</a></li>
+		<li><a href="#_target_6">Explanation</a></li>
+		<li><a href="#_target_7">Pronounciation</a></li>
+		<li><a href="#_target_8">Vocabulary</a></li>
+		<li><a href="#_target_9">Check</a></li>
+	</ul>
+	<div class="border bd-default no-border-top p-2">
+		<div id="_target_1">
+			<div class="">
+				<label for="native-language">Native Language</label>
+				<select name="native-language" id="native-language">
+					<option value="English">English</option>
+				</select>
+			</div>
+			<div class="">
+				<label for="target-language">Target Language</label>
+				<select name="target-language" id="target-language">
+					<option value="Japanese">Arabic</option>
+				</select>
+			</div>
+            <button on:click={goToNextStep}>
+                Go To Prompt
+            </button>
+		</div>
+		<div id="_target_2">The shield is a post-apocalyptic nanomachine.</div>
+		<div id="_target_3">Cream soup is just not the same without basil</div>
+	</div>
+	<!-- {#if currentStep === 1}
+		<NativeExpression />
+	{:else if currentStep === 2}
+		<WriteTranslation />
+	{/if} -->
 
-  <!-- <button on:click={goToPreviousStep} disabled={currentStep === 1}>
+	<!-- <button on:click={goToPreviousStep} disabled={currentStep === 1}>
     Previous
   </button>
   <button on:click={goToNextStep} disabled={currentStep === totalSteps}>

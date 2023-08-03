@@ -1,22 +1,20 @@
-# create-svelte
+# Language Tutor 
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+I think the best way to learn expressing thoughts in a target language is...practicing exactly that. Not memorizing long vocabulary lists, not copying grammar tables from a workbook. But expressing thoughts. This is my attempt to put this theory to the test.
 
-## Creating a project
+## Purpose
 
-If you're seeing this, you've probably already done this step. Congrats!
+### User Stories
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+[ ] As a user, I want to practice expressing thoughts in my target language
+[ ] As a user, I want to set my native and target language
+[ ] As a user, I want to have fun and be motivated
+[ ] As the project creator, I want to improve my understanding of language learning with this project
+[ ] As a user, I want to get valuable feedback
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Commands
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Running the project (possibly go `npm i` first):
 
 ```bash
 npm run dev
@@ -25,14 +23,9 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
-
 To create a production version of your app:
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
