@@ -7,6 +7,7 @@
 
 	// handle the logic behind going from one step to the next:
 	let page = 0;
+	let nativeExpression = '';
 </script>
 
 <main class="text-center p flex flex-col items-center">
@@ -55,7 +56,9 @@
 		<div class="card w-2/3 p4 mt-5 bg-base-100 shadow-xl">
 			<div class="card-body">
 				<h2 class="card-title">Image Prompt</h2>
-				<p>Write something that comes to mind when seeing this image</p>
+				<p>Write down something that comes to mind when seeing this image. Please use your <em>native language</em>. There is no right or wrong.</p>
+				<img src="https://picsum.photos/300" alt="Random Stockphoto" width="300" height="300" />
+				<textarea name="" id="" cols="30" rows="10" bind:value={nativeExpression} />
 				<div class="card-actions justify-end">
 					<button
 						on:click={() => {
@@ -72,6 +75,7 @@
 			<div class="card-body">
 				<h2 class="card-title">Translation Attempt</h2>
 				<p>Try to translate the sentence by yourself. Give it your best shot!</p>
+				<em>{ nativeExpression }</em>
 				<textarea name="" id="" cols="100" rows="10" />
 				<small>You don't have to put your translation here, you can also write it by hand</small>
 				<div class="card-actions justify-end">
@@ -90,6 +94,10 @@
 			<div class="card-body">
 				<h2 class="card-title">Automatic Translation</h2>
 				<p>Check out the automatic translation of the sentence. I recommend the following steps:</p>
+				<h3>
+					<a href="https://translate.google.com/?sl=en&tl=ar&text={encodeURIComponent(nativeExpression)}%20&op=translate" target="_blank"
+					>Google Translate Attempt</a>
+				</h3>
 				<ul>
 					<li>Compare with your own attempt.</li>
 					<li>Listen.</li>
