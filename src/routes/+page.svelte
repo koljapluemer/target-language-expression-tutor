@@ -5,7 +5,17 @@
 	import WriteTranslation from '../components/writeTranslation.svelte';
 </script>
 
+
+
 <main class="text-center container p">
+
+	<ul class="steps">
+		<li class="step step-primary">Register</li>
+		<li class="step step-primary">Choose plan</li>
+		<li class="step">Purchase</li>
+		<li class="step">Receive Product</li>
+	  </ul>
+
 	<div class="card w-96 bg-base-100 shadow-xl">
 		<div class="card-body">
 			<h2 class="card-title">Initial Settings</h2>
