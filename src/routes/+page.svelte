@@ -8,6 +8,7 @@
 	// handle the logic behind going from one step to the next:
 	let page = 0;
 	let nativeExpression = '';
+	let translatedExpression = '';
 </script>
 
 <main class="text-center p flex flex-col items-center">
@@ -46,7 +47,7 @@
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -56,7 +57,11 @@
 		<div class="card w-2/3 p4 mt-5 bg-base-100 shadow-xl">
 			<div class="card-body">
 				<h2 class="card-title">Image Prompt</h2>
-				<p>Write down something that comes to mind when seeing this image. Please use your <em>native language</em>. There is no right or wrong.</p>
+				<p>
+					Write down something that comes to mind when seeing this image. Please use your <em
+						>native language</em
+					>. There is no right or wrong.
+				</p>
 				<img src="https://picsum.photos/300" alt="Random Stockphoto" width="300" height="300" />
 				<textarea name="" id="" cols="30" rows="10" bind:value={nativeExpression} />
 				<div class="card-actions justify-end">
@@ -64,7 +69,7 @@
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -75,7 +80,7 @@
 			<div class="card-body">
 				<h2 class="card-title">Translation Attempt</h2>
 				<p>Try to translate the sentence by yourself. Give it your best shot!</p>
-				<em>{ nativeExpression }</em>
+				<em>{nativeExpression}</em>
 				<textarea name="" id="" cols="100" rows="10" />
 				<small>You don't have to put your translation here, you can also write it by hand</small>
 				<div class="card-actions justify-end">
@@ -83,7 +88,7 @@
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -95,20 +100,26 @@
 				<h2 class="card-title">Automatic Translation</h2>
 				<p>Check out the automatic translation of the sentence. I recommend the following steps:</p>
 				<h3>
-					<a href="https://translate.google.com/?sl=en&tl=ar&text={encodeURIComponent(nativeExpression)}%20&op=translate" target="_blank"
-					>Google Translate Attempt</a>
+					<a
+						class="btn btn-primary"
+						href="https://translate.google.com/?sl=en&tl=ar&text={encodeURIComponent(
+							nativeExpression
+						)}%20&op=translate"
+						target="_blank">Google Translate Attempt</a
+					>
 				</h3>
 				<ul>
 					<li>Compare with your own attempt.</li>
 					<li>Listen.</li>
 				</ul>
 				<p>Afterwards, please copy the translated sentence here:</p>
+				<input type="text" bind:value={translatedExpression} />
 				<div class="card-actions justify-end">
 					<button
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -124,7 +135,7 @@
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -140,7 +151,7 @@
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -151,12 +162,19 @@
 			<div class="card-body">
 				<h2 class="card-title">Explanation</h2>
 				<p>Copy the following prompt into ChatGPT. Take a minute to read it</p>
+				<code>
+					You are an Arabic teacher, I am your pupil. I translated "{nativeExpression}" to "{translatedExpression}".
+					Explain me the sentence, the words in it and grammatical structures. If there are special
+					constructions, snares, common confusion or other interesting things, please point them
+					out. Please adjust the depth of your explanations to the complexity of the
+					sentence.
+				</code>
 				<div class="card-actions justify-end">
 					<button
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -174,7 +192,7 @@
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -194,7 +212,7 @@
 						on:click={() => {
 							page += 1;
 						}}
-						class="btn btn-primary">Next Step</button
+						class="btn">Next Step</button
 					>
 				</div>
 			</div>
@@ -213,7 +231,7 @@
 						on:click={() => {
 							page = 1;
 						}}
-						class="btn btn-primary">New Prompt</button
+						class="btn">New Prompt</button
 					>
 				</div>
 			</div>

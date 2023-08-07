@@ -1,3 +1,1 @@
-- Implement MVP based on sketch in notebook
-- sketch the UI how I want it
-- clean up `+page.svelte` it's full of various experiments
+- Implement MVP
