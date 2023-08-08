@@ -146,6 +146,15 @@
 			<div class="card-body">
 				<h2 class="card-title">Pronounciation</h2>
 				<p>Dive deeper into the pronounciation of each word by checking out the links below</p>
+
+				<ul>
+					{#each translatedExpression.split(' ') as word}
+						<li class="flex gap">
+							<a href="https://forvo.com/search/{word}/">{word}</a>
+						</li>
+					{/each}
+				</ul>
+
 				<div class="card-actions justify-end">
 					<button
 						on:click={() => {
@@ -166,8 +175,7 @@
 					You are an Arabic teacher, I am your pupil. I translated "{nativeExpression}" to "{translatedExpression}".
 					Explain me the sentence, the words in it and grammatical structures. If there are special
 					constructions, snares, common confusion or other interesting things, please point them
-					out. Please adjust the depth of your explanations to the complexity of the
-					sentence.
+					out. Please adjust the depth of your explanations to the complexity of the sentence.
 				</code>
 				<div class="card-actions justify-end">
 					<button
@@ -187,6 +195,11 @@
 				<p>
 					Do you still remember the words? You may write the answer in the input field (or not).
 				</p>
+				{#each translatedExpression.split(' ') as word}
+					<div class="flex gap">
+						{word} <input type="text" />
+					</div>
+				{/each}
 				<div class="card-actions justify-end">
 					<button
 						on:click={() => {
