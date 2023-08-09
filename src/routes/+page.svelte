@@ -1,8 +1,6 @@
 <script>
 	import '../tailwind.css';
 
-	import NativeExpression from '../components/nativeExpression.svelte';
-	import WriteTranslation from '../components/writeTranslation.svelte';
 	// import { t } from 'vitest/dist/types-198fd1d9';
 
 	// handle the logic behind going from one step to the next:
@@ -87,7 +85,22 @@
 
 	let nativeLanguage = possibleLanguages[16];
 	let targetLanguage = possibleLanguages[2];
+
+	function copy() {
+		// find #prompt
+		const prompt = document.getElementById('prompt');
+		// select the text
+		prompt.select();
+		prompt.setSelectionRange(0, 99999); /*For mobile devices*/
+		// copy the text
+		navigator.clipboard.writeText(prompt.value);
+		// open chatgpt
+		window.open('https://chat.openai.com/', '_blank');
+	}
+
 </script>
+
+
 
 <main class="text-center p flex flex-col items-center">
 	<ul class="steps">
@@ -300,13 +313,12 @@
 			<div class="card-body">
 				<h2 class="card-title">Explanation</h2>
 				<p>Copy the following prompt into ChatGPT. Take a minute to read it</p>
-				<textarea readonly class="bg-neutral-900/50 p-2 text-sm text-neutral-700">
+				<textarea id="prompt" readonly class="bg-neutral-900/50 p-2 text-sm text-neutral-700 whitespace-normal" value='
 					You are an {targetLanguage.language} teacher, I am your pupil. I translated "{nativeExpression}"
 					to "{translatedExpression}". Explain me the sentence, the words in it and grammatical
 					structures. If there are special constructions, snares, common confusion or other
 					interesting things, please point them out. Please adjust the depth of your explanations to
-					the complexity of the sentence. Please explain in {nativeLanguage.language}.
-				</textarea>
+					the complexity of the sentence. Please explain in {nativeLanguage.language}.' />
 				<button class="btn btn-primary" on:click={copy}> Copy Prompt and Open ChatGPT </button>
 				<div class="card-actions justify-end">
 					<button
