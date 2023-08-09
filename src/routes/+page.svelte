@@ -9,6 +9,84 @@
 	let page = 0;
 	let nativeExpression = '';
 	let translatedExpression = '';
+
+	const possibleLanguages = [
+		{ language: 'Afrikaans', shortcode: 'af' },
+		{ language: 'Albanian', shortcode: 'sq' },
+		{ language: 'Arabic', shortcode: 'ar' },
+		{ language: 'Armenian', shortcode: 'hy' },
+		{ language: 'Azerbaijani', shortcode: 'az' },
+		{ language: 'Basque', shortcode: 'eu' },
+		{ language: 'Bengali', shortcode: 'bn' },
+		{ language: 'Bosnian', shortcode: 'bs' },
+		{ language: 'Bulgarian', shortcode: 'bg' },
+		{ language: 'Catalan', shortcode: 'ca' },
+		{ language: 'Chinese (Simplified)', shortcode: 'zh-CN' },
+		{ language: 'Chinese (Traditional)', shortcode: 'zh-TW' },
+		{ language: 'Croatian', shortcode: 'hr' },
+		{ language: 'Czech', shortcode: 'cs' },
+		{ language: 'Danish', shortcode: 'da' },
+		{ language: 'Dutch', shortcode: 'nl' },
+		{ language: 'English', shortcode: 'en' },
+		{ language: 'Esperanto', shortcode: 'eo' },
+		{ language: 'Estonian', shortcode: 'et' },
+		{ language: 'Filipino (Tagalog)', shortcode: 'fil' },
+		{ language: 'Finnish', shortcode: 'fi' },
+		{ language: 'French', shortcode: 'fr' },
+		{ language: 'Galician', shortcode: 'gl' },
+		{ language: 'German', shortcode: 'de' },
+		{ language: 'Greek', shortcode: 'el' },
+		{ language: 'Gujarati', shortcode: 'gu' },
+		{ language: 'Hebrew', shortcode: 'he' },
+		{ language: 'Hindi', shortcode: 'hi' },
+		{ language: 'Hungarian', shortcode: 'hu' },
+		{ language: 'Icelandic', shortcode: 'is' },
+		{ language: 'Indonesian', shortcode: 'id' },
+		{ language: 'Italian', shortcode: 'it' },
+		{ language: 'Japanese', shortcode: 'ja' },
+		{ language: 'Javanese', shortcode: 'jv' },
+		{ language: 'Kannada', shortcode: 'kn' },
+		{ language: 'Khmer', shortcode: 'km' },
+		{ language: 'Korean', shortcode: 'ko' },
+		{ language: 'Latvian', shortcode: 'lv' },
+		{ language: 'Lithuanian', shortcode: 'lt' },
+		{ language: 'Macedonian', shortcode: 'mk' },
+		{ language: 'Malay', shortcode: 'ms' },
+		{ language: 'Malayalam', shortcode: 'ml' },
+		{ language: 'Maltese', shortcode: 'mt' },
+		{ language: 'Maori', shortcode: 'mi' },
+		{ language: 'Marathi', shortcode: 'mr' },
+		{ language: 'Mongolian', shortcode: 'mn' },
+		{ language: 'Nepali', shortcode: 'ne' },
+		{ language: 'Norwegian', shortcode: 'no' },
+		{ language: 'Odia (Oriya)', shortcode: 'or' },
+		{ language: 'Pashto', shortcode: 'ps' },
+		{ language: 'Persian', shortcode: 'fa' },
+		{ language: 'Polish', shortcode: 'pl' },
+		{ language: 'Portuguese', shortcode: 'pt' },
+		{ language: 'Punjabi', shortcode: 'pa' },
+		{ language: 'Romanian', shortcode: 'ro' },
+		{ language: 'Russian', shortcode: 'ru' },
+		{ language: 'Sanskrit', shortcode: 'sa' },
+		{ language: 'Serbian', shortcode: 'sr' },
+		{ language: 'Sinhala', shortcode: 'si' },
+		{ language: 'Slovak', shortcode: 'sk' },
+		{ language: 'Slovenian', shortcode: 'sl' },
+		{ language: 'Spanish', shortcode: 'es' },
+		{ language: 'Swahili', shortcode: 'sw' },
+		{ language: 'Swedish', shortcode: 'sv' },
+		{ language: 'Tamil', shortcode: 'ta' },
+		{ language: 'Telugu', shortcode: 'te' },
+		{ language: 'Thai', shortcode: 'th' },
+		{ language: 'Turkish', shortcode: 'tr' },
+		{ language: 'Ukrainian', shortcode: 'uk' },
+		{ language: 'Urdu', shortcode: 'ur' },
+		{ language: 'Uzbek', shortcode: 'uz' },
+		{ language: 'Vietnamese', shortcode: 'vi' }
+	];
+
+	let nativeLanguage = 'en';
+	let targetLanguage = 'es';
 </script>
 
 <main class="text-center p flex flex-col items-center">
@@ -29,17 +107,37 @@
 			<div class="card-body">
 				<h2 class="card-title">Initial Settings</h2>
 				<div id="_target_1">
-					<div class="">
-						<label for="native-language">Native Language</label>
-						<select name="native-language" id="native-language">
-							<option value="English">English</option>
-						</select>
-					</div>
-					<div class="">
-						<label for="target-language">Target Language</label>
-						<select name="target-language" id="target-language">
-							<option value="Japanese">Arabic</option>
-						</select>
+					<div class="flex gap flex-col items-start">
+						<div class="my-2">
+							<label for="native-language">Native Language: </label>
+							<select
+								bind:value="{nativeLanguage}"
+								name="native-language"
+								id="native-language"
+								class="select select-bordered max-w-xs"
+							>
+								{#each possibleLanguages as lang}
+									<option value={lang.shortcode}>
+										{lang.language}
+									</option>
+								{/each}
+							</select>
+						</div>
+						<div class="my-2">
+							<label for="target-language">Target Language: </label>
+							<select
+								bind:value="{targetLanguage}"
+								name="target-language"
+								id="target-language"
+								class="select select-bordered max-w-xs"
+							>
+								{#each possibleLanguages as lang}
+									<option value={lang.shortcode}>
+										{lang.language}
+									</option>
+								{/each}
+							</select>
+						</div>
 					</div>
 				</div>
 				<div class="card-actions justify-end">
@@ -102,7 +200,7 @@
 				<h3>
 					<a
 						class="btn btn-primary"
-						href="https://translate.google.com/?sl=en&tl=ar&text={encodeURIComponent(
+						href="https://translate.google.com/?sl={nativeLanguage}&tl={targetLanguage}&text={encodeURIComponent(
 							nativeExpression
 						)}%20&op=translate"
 						target="_blank">Google Translate Attempt</a
