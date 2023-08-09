@@ -6,7 +6,7 @@
 	// import { t } from 'vitest/dist/types-198fd1d9';
 
 	// handle the logic behind going from one step to the next:
-	let page = 3;
+	let page = 6;
 	let nativeExpression = '';
 	let translatedExpression = '';
 
@@ -262,7 +262,7 @@
 						<li class="my-2">
 							<a href="https://forvo.com/search/{word}/" class="btn flex gap-2 items-center">
 								<svg
-								class="w-4 h-4"
+									class="w-4 h-4"
 									aria-hidden="true"
 									fill="none"
 									stroke="currentColor"
@@ -300,13 +300,14 @@
 			<div class="card-body">
 				<h2 class="card-title">Explanation</h2>
 				<p>Copy the following prompt into ChatGPT. Take a minute to read it</p>
-				<code>
+				<textarea readonly class="bg-neutral-900/50 p-2 text-sm text-neutral-700">
 					You are an {targetLanguage.language} teacher, I am your pupil. I translated "{nativeExpression}"
 					to "{translatedExpression}". Explain me the sentence, the words in it and grammatical
 					structures. If there are special constructions, snares, common confusion or other
 					interesting things, please point them out. Please adjust the depth of your explanations to
 					the complexity of the sentence. Please explain in {nativeLanguage.language}.
-				</code>
+				</textarea>
+				<button class="btn btn-primary" on:click={copy}> Copy Prompt and Open ChatGPT </button>
 				<div class="card-actions justify-end">
 					<button
 						on:click={() => {
