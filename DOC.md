@@ -2,6 +2,8 @@
 
 I set this up as barebones skeleton SvelteKit. This is my first serious run with Svelte, so expect some weird setup.
 
+Everything essentially lives in `+pages.svelte`. The tab structure is a combination of sleek DaisyUI stuff, and very simple page-counter & conditional display svelte logic. Svelte binding etc is gloriously terse, so there is actually not much logic...it's just card after card, with quite a lot of structural HTML and occasional logic references to the script at the top. Longest logic is the function to copy the chatGPT prompt and open chatGPT (`copy()`).
+
 ## History
 
 ### 2022-08-03

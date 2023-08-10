@@ -4,9 +4,10 @@
 	// import { t } from 'vitest/dist/types-198fd1d9';
 
 	// handle the logic behind going from one step to the next:
-	let page = 6;
+	let page = 0;
 	let nativeExpression = '';
 	let translatedExpression = '';
+	let translationGuess = '';
 
 	const possibleLanguages = [
 		{ language: 'Afrikaans', shortcode: 'af' },
@@ -192,7 +193,7 @@
 					shot!
 				</p>
 				<em>{nativeExpression}</em>
-				<textarea name="" id="" cols="100" rows="10" />
+				<textarea name="" id="" cols="100" rows="10" bind:value={translationGuess} />
 				<small>You don't have to put your translation here, you can also write it by hand</small>
 				<div class="card-actions justify-end">
 					<button
